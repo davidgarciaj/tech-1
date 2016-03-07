@@ -31,4 +31,27 @@ public class Responder
     {
         return respuestas.get(rnd.nextInt(respuestas.size()));
     }
+
+    /**
+     * Generate a response special with the param.
+     * @param String the special word.
+     * @return   A string that should be displayed as the response
+     */
+    public String generateResponse(int sentence)
+    {
+        String response;
+        switch (sentence) {
+                case 1:  response = "The telephone is a very util instrument for our company.";
+                break;
+                case 2:  response = "Our company have a excelent web...";
+                break;
+                case 3:  response = "Yes, we are awesome.";
+                break;
+                case 4:  response = "Wait a moment please, you need to think better this situation";
+                break;
+                default: response = generateResponse();
+                break;
+            }
+        return response;
+    }
 }

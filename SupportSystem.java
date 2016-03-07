@@ -15,7 +15,7 @@ public class SupportSystem
 {
     private InputReader reader;
     private Responder responder;
-    
+
     /**
      * Creates a technical support system.
      */
@@ -38,14 +38,20 @@ public class SupportSystem
 
         while(!finished) {
             String input = reader.getInput();
-
-            if(input.trim().equalsIgnoreCase("bye")) {
-                finished = true;
+            String response = responder.generateResponse();
+            switch (input.trim().toLowerCase()) {
+                case "bye":  finished = true;
+                break;
+                case "telephone":  response = responder.generateResponse(1);
+                break;
+                case "pc":  response = responder.generateResponse(2);
+                break;
+                case "awesome":  response = responder.generateResponse(3);
+                break;
+                case "demand":  response = responder.generateResponse(4);
+                break;
             }
-            else {
-                String response = responder.generateResponse();
-                System.out.println(response);
-            }
+            System.out.println(response);
         }
         printGoodbye();
     }
