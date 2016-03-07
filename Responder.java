@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Arrays;
+import java.util.HashMap;
 /**
  * The responder class represents a response generator object.
  * It is used to generate an automatic response to an input string.
@@ -12,6 +13,7 @@ public class Responder
 {
     private ArrayList<String> respuestas;
     private Random rnd;
+    private HashMap<String,String> respuestaEspecial;
     /**
      * Construct a Responder - nothing to do
      */
@@ -21,6 +23,11 @@ public class Responder
                 Arrays.asList("That sounds interesting. Tell me more...", "Well, continue...", "I dont care...",
                     "Tell me something more interesting please", "Only want speak by you..."));
         rnd = new Random();
+        respuestaEspecial = new HashMap<>();
+        respuestaEspecial.put("telephone","The telephone is a very util instrument for our company.");        
+        respuestaEspecial.put("pc","Our company have a excelent web...");
+        respuestaEspecial.put("awesome","Yes, we are awesome.");
+        respuestaEspecial.put("demand","Wait a moment please, you need to think better this situation");
     }
 
     /**
@@ -37,21 +44,8 @@ public class Responder
      * @param String the special word.
      * @return   A string that should be displayed as the response
      */
-    public String generateResponse(int sentence)
+    public String generateResponse(String sentence)
     {
-        String response;
-        switch (sentence) {
-                case 1:  response = "The telephone is a very util instrument for our company.";
-                break;
-                case 2:  response = "Our company have a excelent web...";
-                break;
-                case 3:  response = "Yes, we are awesome.";
-                break;
-                case 4:  response = "Wait a moment please, you need to think better this situation";
-                break;
-                default: response = generateResponse();
-                break;
-            }
-        return response;
+        return respuestaEspecial.get(sentence);
     }
 }

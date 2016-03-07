@@ -42,13 +42,15 @@ public class SupportSystem
             switch (input.trim().toLowerCase()) {
                 case "bye":  finished = true;
                 break;
-                case "telephone":  response = responder.generateResponse(1);
+                case "telephone":  response = responder.generateResponse("telephone");
                 break;
-                case "pc":  response = responder.generateResponse(2);
+                case "pc":  response = responder.generateResponse("pc");
                 break;
-                case "awesome":  response = responder.generateResponse(3);
+                case "awesome":  response = responder.generateResponse("awesome");
                 break;
-                case "demand":  response = responder.generateResponse(4);
+                case "demand":  response = responder.generateResponse("demand");
+                break;
+                default: response = responder.generateResponse();
                 break;
             }
             System.out.println(response);
