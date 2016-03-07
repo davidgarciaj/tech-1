@@ -38,22 +38,13 @@ public class SupportSystem
 
         while(!finished) {
             String input = reader.getInput();
-            String response = responder.generateResponse();
-            switch (input.trim().toLowerCase()) {
-                case "bye":  finished = true;
-                break;
-                case "telephone":  response = responder.generateResponse("telephone");
-                break;
-                case "pc":  response = responder.generateResponse("pc");
-                break;
-                case "awesome":  response = responder.generateResponse("awesome");
-                break;
-                case "demand":  response = responder.generateResponse("demand");
-                break;
-                default: response = responder.generateResponse();
-                break;
+            if (input.trim().toLowerCase().equals("bye")) {
+               finished = true;
             }
-            System.out.println(response);
+            else{
+                String respuesta = responder.generateResponse(input);
+                System.out.println(respuesta);
+            }
         }
         printGoodbye();
     }

@@ -31,21 +31,14 @@ public class Responder
     }
 
     /**
-     * Generate a response.
-     * @return   A string that should be displayed as the response
-     */
-    public String generateResponse()
-    {
-        return respuestas.get(rnd.nextInt(respuestas.size()));
-    }
-
-    /**
      * Generate a response special with the param.
      * @param String the special word.
      * @return   A string that should be displayed as the response
      */
     public String generateResponse(String sentence)
     {
-        return respuestaEspecial.get(sentence);
+        String respuesta = respuestaEspecial.get(sentence);
+        if(respuesta == null){ respuesta = respuestas.get(rnd.nextInt(respuestas.size()));}
+        return respuesta;
     }
 }
